@@ -1,72 +1,55 @@
-Play Catalog Service API
-This is a simple RESTful API for managing items in a catalog. It provides endpoints to perform CRUD operations on items.
+## Web API for Managing Items
 
-Endpoints
-GET /items
+This repository contains a simple Web API for managing items. The API allows you to perform basic CRUD (Create, Read, Update, Delete) operations on items.
 
-Retrieves a list of all items in the catalog.
-GET /items/{id}
+### Endpoints
 
-Retrieves the details of a specific item by its unique identifier.
-POST /items
+- **GET /items**: Retrieves all items.
+- **GET /items/{id}**: Retrieves a specific item by its ID.
+- **POST /items**: Creates a new item.
+- **PUT /items/{id}**: Updates an existing item.
+- **DELETE /items/{id}**: Deletes an item.
 
-Creates a new item in the catalog.
-Request Body:
-json
-Copy code
-{
-  "name": "string",
-  "description": "string",
-  "price": "decimal"
-}
-Constraints:
-name (required): Name of the item.
-description: Description of the item.
-price (range: 0-1000): Price of the item.
-PUT /items/{id}
+### Usage
 
-Updates an existing item in the catalog.
-Request Body:
-json
-Copy code
-{
-  "name": "string",
-  "description": "string",
-  "price": "decimal"
-}
-Constraints:
-name (required): New name of the item.
-description: New description of the item.
-price (range: 0-1000): New price of the item.
-DELETE /items/{id}
+- **GET /items**: 
+  - Response: Array of item objects.
+- **GET /items/{id}**: 
+  - Parameters: `id` (Guid) - ID of the item to retrieve.
+  - Response: Single item object.
+- **POST /items**: 
+  - Body: JSON object containing item details.
+  - Response: Created item object with its ID.
+- **PUT /items/{id}**: 
+  - Parameters: `id` (Guid) - ID of the item to update.
+  - Body: JSON object containing updated item details.
+  - Response: No content.
+- **DELETE /items/{id}**: 
+  - Parameters: `id` (Guid) - ID of the item to delete.
+  - Response: No content.
 
-Deletes an item from the catalog.
-Data Transfer Objects (DTOs)
-ItemDto
+### Data Formats
 
-Represents the data structure of an item.
-Fields:
-Id: Unique identifier of the item.
-Name: Name of the item.
-Description: Description of the item.
-Price: Price of the item.
-CreatedDate: Date and time when the item was created.
-CreateItemDto
+- **ItemDto**: Represents an item.
+  - Properties: ID (Guid), Name (string), Description (string), Price (decimal), CreatedDate (DateTimeOffset).
+- **CreateItemDto**: Data transfer object for creating a new item.
+  - Properties: Name (string), Description (string), Price (decimal).
+- **UpdateItemDto**: Data transfer object for updating an existing item.
+  - Properties: Name (string), Description (string), Price (decimal).
 
-Represents the data structure for creating a new item.
-Fields:
-Name (required): Name of the item.
-Description: Description of the item.
-Price (range: 0-1000): Price of the item.
-UpdateItemDto
+### Technologies Used
 
-Represents the data structure for updating an existing item.
-Fields:
-Name (required): New name of the item.
-Description: New description of the item.
-Price (range: 0-1000): New price of the item.
-Usage
-Clone the repository.
-Navigate to the project directory.
-Build and run the application.
-Access the API endpoints using a tool like Postman or any HTTP client.
+- C#
+- ASP.NET Core
+- Microsoft.AspNetCore.Mvc
+
+### How to Run
+
+1. Clone this repository.
+2. Open the solution in Visual Studio or your preferred C# IDE.
+3. Build and run the solution.
+4. Use your favorite API testing tool (e.g., Postman) to interact with the API endpoints.
+
+### Contributors
+
+- taha-dogan
